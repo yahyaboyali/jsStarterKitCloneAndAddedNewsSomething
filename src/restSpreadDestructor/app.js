@@ -56,3 +56,43 @@ console.log(Math.max(...points))
 
 console.log(..."ABC","D",..."EFG","H")
 // TÜM HARFLERİ AYRIŞTIRDIK
+
+
+//DESTRUCTURING HAYATİ REACTTA ÇOK KULLANILIYOR
+
+// ELİMİZDEKİ ARRAYIN DEĞERLERİNİ DEĞİŞKENLERER ATAMAK AMAÇ 
+
+let populations = [10000,20000,30000]
+
+// lette değerleri tanımlıyoruz
+//karşılıklı indexleri aktarıyor
+
+let [small,medium,high] = populations;
+// karşıda iç içe array olursa bu sefer let kısmında tanımlarken de array 
+// iç içe array atamamız gerekiyor...
+console.log(small)
+console.log(medium)
+console.log(high)
+
+// şöyle bir kullanım da var
+
+function someFunction([small1],number ) {
+    //small1 bir array gerekiyor ve o ilk elemanı yazdırıyor
+    // ilk eleemana geleni destructing yapıyor
+
+    console.log("small1 "+small1)
+}
+someFunction(populations)
+
+
+let category = {id:1,name:"içecek"}
+// iki şekilde de atama veri çekme yapılabilir
+console.log(category.id)
+console.log(category["name"])
+
+// şeklinde objeyi destruct etmiş olduk
+let {id,name}  = category
+
+console.log(id+" "+name)
+
+
