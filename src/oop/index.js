@@ -20,7 +20,7 @@ console.log(customer.name)
 
 // direk Classın kendisine prototyping 
 Customer.bisey="bisey"
-console.log(Customer.bisey)
+//console.log(Customer.bisey)
 
 // mantığın babası geliyor burası çok önemli sürekli bakmalısın
 
@@ -39,3 +39,60 @@ class KurumsalCustomer extends Customer{
         this.companyName=companyName
     }
 }
+let products = [
+    {id:1,name:"acer laptop",unitPrice:15000},
+    {id:2,name:"asus laptop",unitPrice:20000},
+    {id:3,name:"lenovo laptop",unitPrice:17000},
+    {id:4,name:"dell laptop",unitPrice:12000}
+]
+
+console.log("<ul>")
+products.map(product=>console.log(`<li>${product.name}</li>`))
+console.log("</ul>")
+
+// var deneme;
+// function getData(){
+    
+//      fetch("http://localhost:8080/api/books/getAll")
+//      .then(response=>response.json()).then(
+//          data=>{
+//              console.log(data)
+//               deneme = data
+//              console.log(deneme)
+//              })
+             
+// }
+// getData()
+
+
+// referans bu yeni arraylerle değişiyor 
+/*
+filter yeni bir array döndürür ve referans değişmiş olur
+
+*/
+let filterProducts= products.filter(product=>product.unitPrice>12000)
+
+console.log(filterProducts)
+
+
+// accumulator görevi görüyor reduce
+// her product için acc ye ekleme yapar başlangıç değeri de 0 olarak sonradan veriyorsun
+
+let carttotal = products.reduce((acc,product)=> acc+product.unitPrice,0)
+
+console.log(carttotal)
+
+
+/*
+filtreleme yapıyor ardından kdv değerini güncel fiyatlarına ekliyor 
+ardından reduce kullanıp toplam değeri hesaplıyor 
+yeni price lara göre 
+*/
+let cartTotal2 = products.filter(p=>p.unitPrice>1000).map(
+    p=>{
+        p.unitPrice=p.unitPrice*1.18
+        return p;
+    }
+).reduce((acc,p)=>acc+p.unitPrice,0)
+
+console.log(cartTotal2)
